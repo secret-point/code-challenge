@@ -10,7 +10,7 @@ const router = express.Router();
 
 router.post("/", createEvent);
 router.get("/all", getEvents);
-router.get("/search", getEventsInRange);
+router.post("/search", getEventsInRange);
 router.patch("/:id", updateEvent);
 router.delete("/:id", deleteEvent);
 
