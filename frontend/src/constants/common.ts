@@ -1,6 +1,6 @@
 export const ALERT_MESSAGES: Record<string, any> = {
   get: {
-    message: "Events received successfully!",
+    message: "All events received successfully!",
     serverity: "info",
   },
   create: { message: "Event saved succesfully!", serverity: "success" },

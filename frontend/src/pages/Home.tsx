@@ -1,19 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { EventForm } from "../components/EventForm";
 import { EventList } from "../components/EventList";
 import { Box, Container } from "@mui/material";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import { useEvents } from "../hooks/useEvents";
+import { IEvent } from "../types/common";
 
 const Home: React.FC = () => {
+  const [eventSearch, setEventSearch] = useState<IEvent>({
+    price: 0,
+    description: "",
+    startDate: "",
+    endDate: "",
+  });
+
   const {
     events,
+    setEvents,
     messageInfo,
     selectedEvent,
     setSelectedEvent,
     open,
     setOpen,
+    getAllEvents,
     addEvent,
     updateEvent,
     deleteEvent,
@@ -30,11 +40,13 @@ const Home: React.FC = () => {
   };
 
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="lg">
       <Box sx={{ display: "flex", p: 5, gap: 5 }}>
-        <Box sx={{ width: 500 }}>
+        <Box sx={{ width: 900 }}>
           <EventList
             events={events}
+            getAllEvents={getAllEvents}
+            setEvents={setEvents}
             setSelectedEvent={setSelectedEvent}
             deleteEvent={deleteEvent}
           />

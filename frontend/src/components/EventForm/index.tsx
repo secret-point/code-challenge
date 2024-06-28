@@ -13,6 +13,7 @@ import {
   DateRange,
   DateRangePicker,
   LocalizationProvider,
+  StaticDateRangePicker,
 } from "@mui/x-date-pickers-pro";
 import dayjs, { Dayjs } from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers-pro/AdapterDayjs";
@@ -96,14 +97,13 @@ export const EventForm: React.FC<EventFormProps> = ({
       </FormControl>
 
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DateRangePicker
+        <StaticDateRangePicker
           value={[dayjs(eventData.startDate), dayjs(eventData.endDate)]}
           onChange={handleDateChange}
           slotProps={{
-            textField: {
-              required: true,
-            },
+            actionBar: { actions: [] },
           }}
+          calendars={2}
         />
       </LocalizationProvider>
       <Button type="submit" variant="contained" color="primary">
